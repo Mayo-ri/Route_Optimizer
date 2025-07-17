@@ -1,6 +1,7 @@
-const themeToggle = document.getElementById('themeToggle');
+document.addEventListener('DOMContentLoaded', () => {
+    const themeToggle = document.getElementById('themeToggle');
     const body = document.body;
-    
+
     const currentTheme = localStorage.getItem('theme') || 'light';
     body.setAttribute('data-theme', currentTheme);
     updateThemeIcon(currentTheme);
@@ -8,7 +9,7 @@ const themeToggle = document.getElementById('themeToggle');
     themeToggle.addEventListener('click', () => {
         const currentTheme = body.getAttribute('data-theme');
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        
+
         body.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateThemeIcon(newTheme);
@@ -17,6 +18,7 @@ const themeToggle = document.getElementById('themeToggle');
     function updateThemeIcon(theme) {
         themeToggle.textContent = theme === 'dark' ? '☀️' : '🌙';
     }
+});
 
     function updateDateTime() {
         const now = new Date();
