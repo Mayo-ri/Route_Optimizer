@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Route Optimizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="../static/style.css"">
+  <script src="script.js"></script>
+</head>
+<body data-theme="light">
+  <!-- 🌐 Navbar -->
+  <header class="navbar">
+    <div class="logo">🧭 RouteOptimizer</div>
+    <div class="nav-right">
+      <div class="datetime" id="datetime">--</div>
+      <button class="theme-toggle" id="themeToggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- 🧭 Main Container (Sidebar + Main Content) -->
+  <div class="container">
+    <!-- 📍 Sidebar with Suggested Places -->
+    <aside class="sidebar">
+      <h3>📍 Suggested Places</h3>
+      <ul class="suggested-places" id="suggestedPlaces">
+        <!-- Place items (already coded above) -->
+        <li class="place-item" onclick="selectPlace('New York, NY')"><div class="place-name">New York</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('Los Angeles, CA')"><div class="place-name">Los Angeles</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('Chicago, IL')"><div class="place-name">Chicago</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('Houston, TX')"><div class="place-name">Houston</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('Phoenix, AZ')"><div class="place-name">Phoenix</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('Philadelphia, PA')"><div class="place-name">Philadelphia</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('San Antonio, TX')"><div class="place-name">San Antonio</div><div class="place-type">Major City</div></li>
+        <li class="place-item" onclick="selectPlace('San Diego, CA')"><div class="place-name">San Diego</div><div class="place-type">Major City</div></li>
+      </ul>
+    </aside>
+
+    <!-- 🧩 Main Content Area -->
+    <main class="main-content">
+      <!-- 🚀 Route Optimizer Section -->
+      <section class="route-section">
+        <h2 class="section-title">🚀 Route Optimizer</h2>
+        <div class="input-group">
+          <div class="input-field">
+            <label for="startLocation">Starting Location</label>
+            <input type="text" id="startLocation" placeholder="Enter starting point..." />
+          </div>
+          <div class="input-field">
+            <label for="endLocation">Destination</label>
+            <input type="text" id="endLocation" placeholder="Enter destination..." />
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="calculateRoute()">
+            <span id="calculateText">🔍 Find Shortest Route</span>
+            <span class="loading hidden" id="loadingSpinner"></span>
+          </button>
+          <button class="btn btn-secondary" onclick="openInGoogleMaps()">🗺️ View in Google Maps</button>
+          <button class="btn btn-secondary" onclick="clearInputs()">🗑️ Clear All</button>
+        </div>
+      </section>
+
+      <!-- 📊 Results Section -->
+      <section class="results-section">
+        <h2 class="section-title">📊 Route Results</h2>
+        <div id="resultsContainer">
+          <div class="result-card">
+            <div class="result-item"><span class="result-label">Shortest Distance:</span><span class="result-value" id="shortestDistance">-- km</span></div>
+            <div class="result-item"><span class="result-label">Estimated Time:</span><span class="result-value" id="estimatedTime">-- minutes</span></div>
+            <div class="result-item"><span class="result-label">Route Status:</span><span class="result-value" id="routeStatus">Ready to calculate</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 🗺️ Map Section -->
+      <section class="map-section">
+        <h2 class="section-title">🗺️ Route Visualization</h2>
+        <div class="map-placeholder" id="mapVisualization">
+          <div class="route-marker marker-start" title="Start"></div>
+          <div class="route-path"></div>
+          <div class="route-marker marker-end" title="End"></div>
+          <div style="text-align: center; margin-top: 2rem;">
+            <h3>Interactive Route Map</h3>
+            <p>Visual representation of your optimized route</p>
+            <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">🟢 Start Point &nbsp;&nbsp;&nbsp; 🔴 End Point</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  
+</body>
+</html>
